@@ -7,7 +7,14 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json()); //middlewares
 app.use(cors());
-
+await pool.query(`
+CREATE TABLE IF NOT EXISTS movies (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  year INT NOT NULL,
+  genre VARCHAR(255) NOT NULL
+)
+`);
 app.get('/', (req, res) => {
   res.json({ message: 'Servidor corriendo perfectamente' });
 });
