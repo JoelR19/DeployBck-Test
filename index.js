@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { pool } from './db.js';
 
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json()); //middlewares
 app.use(cors());
@@ -49,7 +50,6 @@ app.delete('/movies/:id', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('servidor corriendo en el puerto 3000 🎇');
 });
-  
